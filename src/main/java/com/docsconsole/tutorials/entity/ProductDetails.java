@@ -22,7 +22,8 @@ public class ProductDetails {
 	@Column(name = "PROD_PRICE")
 	private float prodPrice;
 
-	@OneToOne(mappedBy = "prodDetails", cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
 	private Product product;
 
 	public ProductDetails() {

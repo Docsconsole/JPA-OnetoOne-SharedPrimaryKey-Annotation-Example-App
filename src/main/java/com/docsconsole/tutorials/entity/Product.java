@@ -19,9 +19,6 @@ public class Product {
 	private String prodName;
 	@Column(name = "PROD_VENDOR")
 	private String prodVendor;
-	@OneToOne(cascade = CascadeType.ALL)
-	@PrimaryKeyJoinColumn
-	private ProductDetails prodDetails;
 
 	public Product() {
 	}

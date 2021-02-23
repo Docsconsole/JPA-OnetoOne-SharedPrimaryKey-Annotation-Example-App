@@ -17,29 +17,26 @@ public class MainClient {
         EntityTransaction transaction = null;
         try {
 
+            // creates a new product
+            Product product = new Product();
+            ProductDetails details = new ProductDetails();
+
             transaction = entityManager.getTransaction();
             transaction.begin();
 
-            // creates a new product
-            Product product = new Product();
-            // product.setProductId(new Long(101));
             product.setProdName("Angular");
             product.setProdVendor("Google Inc");
 
+            entityManager.persist(product);
+
             // creates product detail
-            ProductDetails details = new ProductDetails();
-            // details.setProductId(new Long(101));
+            //details.setProdDetId(product.getProdId());
             details.setProdName("Angular");
             details.setProdDesc("UI framework");
             details.setProdPrice(new Float(1000));
 
-            // sets the bi-directional association
-            product.setProdDetails(details);
-            // details.setProduct(product);
-
-            // Save employee
-            entityManager.persist(product);
-
+            details.setProduct(product);
+            entityManager.persist(details);
             transaction.commit();
 
         } catch (Exception ex) {
